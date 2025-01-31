@@ -8,7 +8,7 @@ function App() {
   return (
     <div>
       <Navbar />
-      <div className="mt-[70px]">
+      <div className="">
         <Routes>
           <Route path="/" element={<Home />} />
         </Routes>

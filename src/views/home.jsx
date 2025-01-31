@@ -111,7 +111,7 @@ function Home() {
             Exploring the intricate relationship between law and technology in
             the digital age
           </p>
-          <Button size="lg" className="bg-white text-blue-900 hover:bg-blue-50">
+          <Button size="lg" className="bg-white text-blue-900 hover:bg-blue-50" onClick={()=>window.open('https://docs.google.com/forms/d/e/1FAIpQLSfgyCBHjdUTIbUAbnQezpzDvkwZK0RdPZG4s0BSvbcGr5n3ew/viewform','_blank')}>
             Register Now
           </Button>
         </div>
