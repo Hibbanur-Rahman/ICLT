@@ -747,7 +747,13 @@ function Home() {
                     <span className="text-base font-medium text-black me-2">
                       Branch:
                     </span>
-                    1879 Gachibowli IFSC Code: IOBA0001879
+                    1879 Gachibowli 
+                  </p>
+                  <p className="text-base text-gray-600 my-2">
+                    <span className="text-base font-medium text-black me-2">
+                    IFSC Code:
+                    </span>
+                    IOBA0001879
                   </p>
                 </div>
               </CardContent>
