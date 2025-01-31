@@ -147,6 +147,7 @@ function Home() {
           </h1>
 
           <h2 className="text-2xl md:text-3xl mb-8">ICLT 2025</h2>
+          <h2 className="text-2xl md:text-3xl mb-8">25 Feb, 2025 -- HYBRID MODE</h2>
           <p className="text-xl mb-8 max-w-3xl mx-auto">
             Exploring the intricate relationship between law and technology in
             the digital age
