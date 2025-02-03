@@ -36,22 +36,22 @@ const Navbar = () => {
     <>
       {/**====== upper part ====== */}
       <div id="upper-nav" className="w-full flex justify-center items-center border border-x-0 border-t-0">
-        <div className="w-10/12 flex justify-between py-3">
+        <div className="md:w-10/12 w-full flex md:flex-row flex-col md:justify-between items-center py-3">
           <div className="flex items-center">
-            <img src={manuuLogo} alt="" className="w-[100px]" />
+            <img src={manuuLogo} alt="" className="md:w-[100px] w-[60px]" />
             <div className="h-[50px] w-[1px] bg-black mx-3"></div>
-            <h1 className="font-medium">
+            <h1 className="font-medium md:text-lg text-sm">
               INTERNATIONAL CONFERENCE ON LAW AND TECHNOLOGY
             </h1>
           </div>
-          <div className="rounded-2xl shadow-sm p-3 w-[250px] flex flex-col items-center border">
+          <div className="rounded-2xl shadow-sm p-3 w-[250px] flex flex-col items-center border md:my-0 my-2">
             <p className="text-sm font-medium my-1">Conference Date</p>
             <p className="text-sm font-medium my-1">25th Feb 2025</p>
             <div className="rounded-xl p-2 w-full bg-blue-800 text-white font-medium flex items-center justify-center mt-2">
               HYBRID MODE
             </div>
           </div>
-          <div className="flex items-center">
+          <div className="md:flex hidden items-center">
             <div className="h-[50px] w-[1px] bg-black mx-3"></div>
             <img src={logo} alt="" className="w-[100px]" />
           </div>

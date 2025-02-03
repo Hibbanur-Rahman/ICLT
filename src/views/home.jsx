@@ -1,7 +1,9 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
+
 import {
   Building2,
   Calendar,
@@ -147,7 +149,9 @@ function Home() {
           </h1>
 
           <h2 className="text-2xl md:text-3xl mb-8">ICLT 2025</h2>
-          <h2 className="text-2xl md:text-3xl mb-8">25 Feb, 2025 -- HYBRID MODE</h2>
+          <h2 className="text-2xl md:text-3xl mb-8">
+            25 Feb, 2025 -- HYBRID MODE
+          </h2>
           <p className="text-xl mb-8 max-w-3xl mx-auto">
             Exploring the intricate relationship between law and technology in
             the digital age
@@ -417,6 +421,7 @@ function Home() {
               ))}
             </div>
           </div>
+          <ExternalAdvisoryBoard />
         </div>
       </section>
 
@@ -679,8 +684,8 @@ function Home() {
           <h2 className="text-3xl font-bold text-center mb-8">
             Important Dates & payment details
           </h2>
-          <div className="flex w-full gap-6">
-            <Card className="w-5/12">
+          <div className="flex md:flex-row flex-col w-full gap-6">
+            <Card className="md:w-5/12 w-full">
               <CardContent className="p-4">
                 <p className="text-base text-gray-800 my-3">
                   <span className="font-semibold text-black text-lg me-2">
@@ -713,12 +718,14 @@ function Home() {
                   25th February 2025
                 </p>
                 <p className="text-base text-gray-800 my-3">
-                  <span className="font-semibold text-black text-lg me-2">Email:</span>
+                  <span className="font-semibold text-black text-lg me-2">
+                    Email:
+                  </span>
                   iclt.law@manuu.edu.in
                 </p>
               </CardContent>
             </Card>
-            <Card className="w-7/12">
+            <Card className="md:w-7/12 w-full">
               <CardContent className="p-4 flex gap-[20px]">
                 <div className=" h-[300px] w-[300px] overflow-hidden rounded-xl border p-2">
                   <img src={qrCodeImg} alt="" className=" h-full w-full" />
@@ -747,11 +754,11 @@ function Home() {
                     <span className="text-base font-medium text-black me-2">
                       Branch:
                     </span>
-                    1879 Gachibowli 
+                    1879 Gachibowli
                   </p>
                   <p className="text-base text-gray-600 my-2">
                     <span className="text-base font-medium text-black me-2">
-                    IFSC Code:
+                      IFSC Code:
                     </span>
                     IOBA0001879
                   </p>
@@ -838,4 +845,201 @@ function Home() {
   );
 }
 
+const ExternalAdvisoryBoard = () => {
+  const [activeTab, setActiveTab] = useState("international");
+
+  const boardMembers = {
+    international: {
+      title: "International Members",
+      members: [
+        {
+          name: "Justice (Dr.) Saleem Marsoof",
+          position:
+            "Judge Supreme Court of Fiji and Former Chief Justice (A) Supreme Court of Sri Lanka",
+        },
+        {
+          name: "Prof. Jonathan Zittrain",
+          position: "Harvard Law School",
+        },
+        {
+          name: "Mr. J. Todd Reves",
+          position: "Director, Building Respect for IP Division, WIPO",
+        },
+        {
+          name: "Prof. Farhana Helal Mehtab",
+          position: "Green University, Bangladesh",
+        },
+        {
+          name: "Dr. Sarah Jane Fox",
+          position: "School of Justice, Staffordshire University, U.K.",
+        },
+        {
+          name: "Mr. Alfredo Ronchi",
+          position:
+            "Secretary General EC Medici Framework of Cooperation, Milan, Italy",
+        },
+        {
+          name: "Mr. Christoph Stueckelberger",
+          position: "President & Founder Globethics, Geneva Switzerland",
+        },
+        {
+          name: "Andrii Paziuk",
+          position: "CEO Ukranian Academy of Cybersecurity",
+        },
+        {
+          name: "Mauricio Vieira",
+          position: "Chair, University for Peace, Costa Rica",
+        },
+        {
+          name: "Prof. Gary Corn",
+          position: "American University, Washington College of law",
+        },
+      ],
+    },
+    legal: {
+      title: "Legal Experts",
+      members: [
+        {
+          name: "Mr. Nobendu Bhattacharya",
+          position: "Adv. Bangladesh Supreme Court",
+        },
+        {
+          name: "Mr. Fernanda Teixeira Souza Domingos",
+          position: "Federal Prosecutor, Brazil",
+        },
+        {
+          name: "Prof. Dr. Mohamed CHAWKI",
+          position: "Chief Judge & Founder, African Centre for Cyberlaw",
+        },
+        {
+          name: "Adv. Salman Waris",
+          position: "Managing Partner TechLegis Advocates & Solicitors",
+        },
+        {
+          name: "Dr. Pavan Duggal",
+          position: "Advocate, Supreme Court of India",
+        },
+      ],
+    },
+    academic: {
+      title: "Academic Leaders",
+      members: [
+        {
+          name: "Prof. Dilip Ukey",
+          position: "Vice Chancellor, Maharashtra National Law University",
+        },
+        {
+          name: "Prof. VC Vivekanandan",
+          position: "Vice Chancellor, HNLU Raipur",
+        },
+        {
+          name: "Prof. M. Afzal Wani",
+          position: "Pro Vice Chancellor, IILM University",
+        },
+        {
+          name: "Prof. Zafar Mahfooz Nomani",
+          position: "Dean, Faculty of Law, AMU Aligarh",
+        },
+        {
+          name: "Prof. Nuzhat Parween",
+          position: "Jamia Millia Islamia, New Delhi",
+        },
+        {
+          name: "Prof. Azimkhan B. Pathan",
+          position: "Dean, Kalinga Law School",
+        },
+        {
+          name: "Prof. Manirani Das Gupta",
+          position: "Hazra Law College, Calcutta University",
+        },
+      ],
+    },
+    technical: {
+      title: "Technical & Security Experts",
+      members: [
+        {
+          name: "Air Vice Marshal (Dr.) Devesh Vatsa",
+          position: "Advisor Cyber Security & Critical Technologies, DSCI",
+        },
+        {
+          name: "Mr. Rakesh Maheshwari",
+          position: "Former Group Coordinator Ministry of Electronics & IT",
+        },
+        {
+          name: "Dr. Triveni Singh",
+          position: "Ex-Superintendent of Police-Cybercrime",
+        },
+        {
+          name: "Dr. A Nagarathna",
+          position: "Chief Coordinator, ACRDT in Cyber Laws & Forensics",
+        },
+        {
+          name: "Mr. Vijayashankar Nagarajarao",
+          position: "Chairman FDPPI",
+        },
+        {
+          name: "Dr. Nizam Ashraf Khan",
+          position: "Head IPR Cell, GD Goneka University",
+        },
+        {
+          name: "Dr. Atul J Bhai",
+          position: "Centre Head, Internet Governance & AI, HNLU Raipur",
+        },
+      ],
+    },
+  };
+
+  const tabs = [
+    { id: "international", label: "International" },
+    { id: "legal", label: "Legal Experts" },
+    { id: "academic", label: "Academic Leaders" },
+    { id: "technical", label: "Technical Experts" },
+  ];
+
+  return (
+    <div className="mb-12">
+      <div className="flex items-center gap-2 mb-6">
+        <Globe className="w-6 h-6 text-blue-900" />
+        <h3 className="text-2xl font-semibold text-blue-900">
+          External Advisory Board
+        </h3>
+      </div>
+
+      <div className="flex mb-4 border-b">
+        {tabs.map((tab) => (
+          <button
+            key={tab.id}
+            onClick={() => setActiveTab(tab.id)}
+            className={`px-4 py-2 text-sm font-medium transition-colors
+              ${
+                activeTab === tab.id
+                  ? "border-b-2 border-blue-900 text-blue-900"
+                  : "text-gray-600 hover:text-blue-800"
+              }`}
+          >
+            {tab.label}
+          </button>
+        ))}
+      </div>
+
+      <ScrollArea className="h-[600px] rounded-md border p-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {boardMembers[activeTab].members.map((member, index) => (
+            <Card
+              key={index}
+              className="p-4 hover:bg-gray-50 transition-colors"
+            >
+              <div className="space-y-2">
+                <h4 className="text-lg font-bold text-black">
+                  {member.name}
+                </h4>
+                <p className="text-sm text-gray-600">{member.position}</p>
+              </div>
+            </Card>
+          ))}
+        </div>
+      </ScrollArea>
+    </div>
+  );
+};
 export default Home;
