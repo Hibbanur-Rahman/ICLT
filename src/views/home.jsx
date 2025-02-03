@@ -135,7 +135,7 @@ function Home() {
   return (
     <div className="min-h-screen bg-white flex flex-col justify-center items-center">
       {/**===== header section ======== */}
-      <header className="bg-gradient-to-r from-blue-900 to-blue-950 text-white py-20">
+      <header id='home' className="bg-gradient-to-r from-blue-900 to-blue-950 text-white py-20">
         <div className="container mx-auto px-4 text-center">
           <p className="text-base mb-4">
             Maulana Azad National Urdu University
@@ -171,7 +171,7 @@ function Home() {
         </div>
       </header>
 
-      <section className="py-16 bg-white max-w-7xl">
+      <section id='about-manuu' className="py-16 bg-white max-w-7xl">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-center gap-2 mb-8">
             <School className="w-8 h-8 text-blue-900" />
@@ -197,7 +197,7 @@ function Home() {
           </Card>
         </div>
       </section>
-      <section className="py-16 bg-white max-w-7xl">
+      <section id='about-iclt' className="py-16 bg-white max-w-7xl">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-center gap-2 mb-8">
             <VscLaw className="w-8 h-8 text-blue-900" />
@@ -229,7 +229,7 @@ function Home() {
         </div>
       </section>
 
-      <section className="py-16 bg-gray-50 max-w-7xl">
+      <section id='about-manuu-law' className="py-16 bg-gray-50 max-w-7xl">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-center gap-2 mb-8">
             <GraduationCap className="w-8 h-8 text-blue-900" />
@@ -291,7 +291,7 @@ function Home() {
         </div>
       </section>
 
-      <section className="py-16 bg-white max-w-7xl">
+      <section id='call-for-paper' className="py-16 bg-white max-w-7xl">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-8">
             Call for Papers
@@ -345,7 +345,7 @@ function Home() {
         </div>
       </section>
 
-      <section className="py-16 max-w-7xl">
+      <section id='committee' className="py-16 max-w-7xl">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-8">
             <span className="flex items-center justify-center gap-2">
@@ -425,7 +425,7 @@ function Home() {
         </div>
       </section>
 
-      <section className="py-16 bg-gray-50 max-w-7xl">
+      <section id='paper-submission' className="py-16 bg-gray-50 max-w-7xl">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-center gap-2 mb-8">
             <Send className="w-8 h-8 text-blue-900" />
@@ -679,7 +679,7 @@ function Home() {
         </div>
       </section>
 
-      <section className="py-16 bg-gray-50 max-w-7xl">
+      <section id='important-dates' className="py-16 bg-gray-50 max-w-7xl">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-8">
             Important Dates & payment details
@@ -768,7 +768,7 @@ function Home() {
           </div>
         </div>
       </section>
-      <section className="py-16 bg-gray-50 max-w-7xl">
+      <section id='registration-details' className="py-16 bg-gray-50 max-w-7xl">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-8">
             Registration Details
@@ -794,7 +794,7 @@ function Home() {
         </div>
       </section>
 
-      <section className="py-16 bg-gray-50 max-w-7xl">
+      <section id='contact' className="py-16 bg-gray-50 max-w-7xl">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-8">
             Contact Information

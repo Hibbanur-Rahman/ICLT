@@ -14,13 +14,22 @@ import { Drawer, DrawerContent, DrawerTrigger } from "@/components/ui/drawer";
 const Navbar = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
+
+  const scrollToSection = (id) => {
+    const section = document.getElementById(id);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const isActive = (sectionId) => activeSection === sectionId;
 
   useEffect(() => {
     const handleScroll = () => {
-      // Get the height of the upper navbar to use as threshold
-      const upperNav = document.getElementById('upper-nav');
+      const upperNav = document.getElementById("upper-nav");
       const threshold = upperNav ? upperNav.offsetHeight : 0;
-      
+
       if (window.scrollY > threshold) {
         setIsScrolled(true);
       } else {
@@ -28,14 +37,59 @@ const Navbar = () => {
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    const sections = [
+      "home",
+      "about-manuu",
+      "about-iclt",
+      "about-manuu-law",
+      "call-for-paper",
+      "committee",
+      "paper-submission",
+      "important-dates",
+      "registration-details",
+      "contact",
+    ];
+
+    sections.forEach((id) => {
+      const section = document.getElementById(id);
+      if (section) {
+        observer.observe(section);
+      }
+    });
+
+    return () => {
+      sections.forEach((id) => {
+        const section = document.getElementById(id);
+        if (section) {
+          observer.unobserve(section);
+        }
+      });
+    };
   }, []);
 
   return (
     <>
       {/**====== upper part ====== */}
-      <div id="upper-nav" className="w-full flex justify-center items-center border border-x-0 border-t-0">
+      <div
+        id="upper-nav"
+        className="w-full flex justify-center items-center border border-x-0 border-t-0"
+      >
         <div className="md:w-10/12 w-full flex md:flex-row flex-col md:justify-between items-center py-3">
           <div className="flex items-center">
             <img src={manuuLogo} alt="" className="md:w-[100px] w-[60px]" />
@@ -59,9 +113,9 @@ const Navbar = () => {
       </div>
 
       {/**====== main navbar ========= */}
-      <div 
+      <div
         className={`w-full bg-white shadow-md p-4 py-0 z-50 transition-all duration-300 ${
-          isScrolled ? 'fixed top-0 left-0' : 'relative'
+          isScrolled ? "fixed top-0 left-0" : "relative"
         }`}
       >
         <div className="w-11/12 max-w-7xl flex justify-between items-center mx-auto">
@@ -82,54 +136,96 @@ const Navbar = () => {
               >
                 {/* Drawer Content */}
                 <div className="flex flex-col gap-4">
-                  <Button variant="ghost" className="hover:cursor-pointer">
+                  <Button
+                    variant="ghost"
+                    className={`hover:cursor-pointer ${
+                      isActive("home") ? "text-blue-600" : ""
+                    }`}
+                    onClick={() => scrollToSection("home")}
+                  >
                     Home
                   </Button>
-                  <Button variant="ghost" className="hover:cursor-pointer">
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <Button
+                        variant="ghost"
+                        className="flex items-center gap-1"
+                      >
+                        About <FiChevronDown />
+                      </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent className="w-48">
+                      <DropdownMenuItem
+                        className={`hover:cursor-pointer ${
+                          isActive("about-manuu") ? "text-blue-600" : ""
+                        }`}
+                        onClick={() => scrollToSection("about-manuu")}
+                      >
+                        MANUU
+                      </DropdownMenuItem>
+                      <DropdownMenuItem
+                        className={`hover:cursor-pointer ${
+                          isActive("about-iclt") ? "text-blue-600" : ""
+                        }`}
+                        onClick={() => scrollToSection("about-iclt")}
+                      >
+                        ICLT
+                      </DropdownMenuItem>
+                      <DropdownMenuItem
+                        className={`hover:cursor-pointer ${
+                          isActive("about-manuu-law") ? "text-blue-600" : ""
+                        }`}
+                        onClick={() => scrollToSection("about-manuu-law")}
+                      >
+                        MANUU LAW School
+                      </DropdownMenuItem>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+
+                  <Button
+                    variant="ghost"
+                    className={`hover:cursor-pointer ${
+                      isActive("committee") ? "text-blue-600" : ""
+                    }`}
+                    onClick={() => scrollToSection("committee")}
+                  >
                     Committee
                   </Button>
+                  <Button
+                    variant="ghost"
+                    className={`hover:cursor-pointer ${
+                      isActive("important-dates") ? "text-blue-600" : ""
+                    }`}
+                    onClick={() => scrollToSection("important-dates")}
+                  >
+                    Important Dates
+                  </Button>
+                  <Button
+                    variant="ghost"
+                    className={`hover:cursor-pointer ${
+                      isActive("paper-submission") ? "text-blue-600" : ""
+                    }`}
+                    onClick={() => scrollToSection("paper-submission")}
+                  >
+                    Paper Submission
+                  </Button>
 
-                  {/* Contributing Dropdown */}
-                  <DropdownMenu>
-                    <DropdownMenuTrigger asChild>
-                      <Button variant="ghost" className="flex items-center gap-1">
-                        Contributing <FiChevronDown />
-                      </Button>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent className="w-48">
-                      <DropdownMenuItem className="hover:cursor-pointer">
-                        Important Dates
-                      </DropdownMenuItem>
-                      <DropdownMenuItem className="hover:cursor-pointer">
-                        Call for Papers
-                      </DropdownMenuItem>
-                      <DropdownMenuItem className="hover:cursor-pointer">
-                        Publication
-                      </DropdownMenuItem>
-                    </DropdownMenuContent>
-                  </DropdownMenu>
-
-                  {/* Submission Dropdown */}
-                  <DropdownMenu>
-                    <DropdownMenuTrigger asChild>
-                      <Button variant="ghost" className="flex items-center gap-1">
-                        Submission <FiChevronDown />
-                      </Button>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent className="w-48">
-                      <DropdownMenuItem className="hover:cursor-pointer">
-                        Paper Submission
-                      </DropdownMenuItem>
-                      <DropdownMenuItem className="hover:cursor-pointer">
-                        Camera Ready Submission
-                      </DropdownMenuItem>
-                    </DropdownMenuContent>
-                  </DropdownMenu>
-
-                  <Button variant="ghost" className="hover:cursor-pointer">
+                  <Button
+                    variant="ghost"
+                    className={`hover:cursor-pointer ${
+                      isActive("registration-details") ? "text-blue-600" : ""
+                    }`}
+                    onClick={() => scrollToSection("registration-details")}
+                  >
                     Registration
                   </Button>
-                  <Button variant="ghost" className="hover:cursor-pointer">
+                  <Button
+                    variant="ghost"
+                    className={`hover:cursor-pointer ${
+                      isActive("contact") ? "text-blue-600" : ""
+                    }`}
+                    onClick={() => scrollToSection("contact")}
+                  >
                     Contact
                   </Button>
                 </div>
@@ -139,54 +235,92 @@ const Navbar = () => {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex gap-[20px]">
-            <Button variant="ghost" className="hover:cursor-pointer">
+            <Button
+              variant="ghost"
+              className={`hover:cursor-pointer ${
+                isActive("home") ? "text-blue-600" : ""
+              }`}
+              onClick={() => scrollToSection("home")}
+            >
               Home
             </Button>
-            <Button variant="ghost" className="hover:cursor-pointer">
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" className="flex items-center gap-1">
+                  About <FiChevronDown />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="w-48">
+                <DropdownMenuItem
+                  className={`hover:cursor-pointer ${
+                    isActive("about-manuu") ? "text-blue-600" : ""
+                  }`}
+                  onClick={() => scrollToSection("about-manuu")}
+                >
+                  MANUU
+                </DropdownMenuItem>
+                <DropdownMenuItem
+                  className={`hover:cursor-pointer ${
+                    isActive("about-iclt") ? "text-blue-600" : ""
+                  }`}
+                  onClick={() => scrollToSection("about-iclt")}
+                >
+                  ICLT
+                </DropdownMenuItem>
+                <DropdownMenuItem
+                  className={`hover:cursor-pointer ${
+                    isActive("about-manuu-law") ? "text-blue-600" : ""
+                  }`}
+                  onClick={() => scrollToSection("about-manuu-law")}
+                >
+                  MANUU LAW School
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+            <Button
+              variant="ghost"
+              className={`hover:cursor-pointer ${
+                isActive("committee") ? "text-blue-600" : ""
+              }`}
+              onClick={() => scrollToSection("committee")}
+            >
               Committee
             </Button>
+            <Button
+              variant="ghost"
+              className={`hover:cursor-pointer ${
+                isActive("important-dates") ? "text-blue-600" : ""
+              }`}
+              onClick={() => scrollToSection("important-dates")}
+            >
+              Important Dates
+            </Button>
+            <Button
+              variant="ghost"
+              className={`hover:cursor-pointer ${
+                isActive("paper-submission") ? "text-blue-600" : ""
+              }`}
+              onClick={() => scrollToSection("paper-submission")}
+            >
+              Paper Submission
+            </Button>
 
-            {/* Contributing Dropdown */}
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="flex items-center gap-1">
-                  Contributing <FiChevronDown />
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-48">
-                <DropdownMenuItem className="hover:cursor-pointer">
-                  Important Dates
-                </DropdownMenuItem>
-                <DropdownMenuItem className="hover:cursor-pointer">
-                  Call for Papers
-                </DropdownMenuItem>
-                <DropdownMenuItem className="hover:cursor-pointer">
-                  Publication
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-
-            {/* Submission Dropdown */}
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="flex items-center gap-1">
-                  Submission <FiChevronDown />
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-48">
-                <DropdownMenuItem className="hover:cursor-pointer">
-                  Paper Submission
-                </DropdownMenuItem>
-                <DropdownMenuItem className="hover:cursor-pointer">
-                  Camera Ready Submission
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-
-            <Button variant="ghost" className="hover:cursor-pointer">
+            <Button
+              variant="ghost"
+              className={`hover:cursor-pointer ${
+                isActive("registration-details") ? "text-blue-600" : ""
+              }`}
+              onClick={() => scrollToSection("registration-details")}
+            >
               Registration
             </Button>
-            <Button variant="ghost" className="hover:cursor-pointer">
+            <Button
+              variant="ghost"
+              className={`hover:cursor-pointer ${
+                isActive("contact") ? "text-blue-600" : ""
+              }`}
+              onClick={() => scrollToSection("contact")}
+            >
               Contact
             </Button>
           </div>
