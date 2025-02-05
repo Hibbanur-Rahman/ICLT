@@ -858,8 +858,8 @@ const ExternalAdvisoryBoard = () => {
             "Judge Supreme Court of Fiji and Former Chief Justice (A) Supreme Court of Sri Lanka",
         },
         {
-          name: "Prof. Jonathan Zittrain",
-          position: "Harvard Law School",
+          name: "Althaf Marsoof",
+          position: "Associate Professor of Law, Nanyang Technological University",
         },
         {
           name: "Mr. J. Todd Reves",
