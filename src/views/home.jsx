@@ -658,7 +658,7 @@ function Home() {
                     Citation:
                   </span>
                   Submissions are required to strictly adhere to <br />
-                  <span className="font-semibold"> The Bluebook:</span>A Uniform
+                  <span className="font-semibold"> The APA:</span>A Uniform
                   Method of Citation, 20th Edition.
                   <br />
                   <span className="font-semibold">Similarity:</span> Should not
