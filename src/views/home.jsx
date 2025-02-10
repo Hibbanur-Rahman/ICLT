@@ -679,7 +679,7 @@ function Home() {
         </div>
       </section>
 
-      <section id='important-dates' className="py-16 bg-gray-50 max-w-7xl">
+      <section id='important-dates' className="py-16 bg-gray-50 max-w-7xl w-full">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-8">
             Important Dates & payment details
